@@ -6,13 +6,13 @@ export function ZonasFisicas() {
   return (
     <section className='ContainerGlobal'>
         <div className='containerOfferType'>
-          <CheckBox name='Actual'></CheckBox>
-          <CheckBox name='Historico'></CheckBox>
+          <CheckBox title='Actual'></CheckBox>
+          <CheckBox title='Historico'></CheckBox>
         </div>
         
         <div className='Zones'>
-            <CheckBox name='Zonas Homogéneas Urbanas'/>
-            <CheckBox name='Zonas Homogéneas rurales'/>
+            <CheckBox title='Zonas Homogéneas Urbanas'/>
+            <CheckBox title='Zonas Homogéneas rurales'/>
         </div>
         <div className='ContainerButtons'>
             <Buttons/>

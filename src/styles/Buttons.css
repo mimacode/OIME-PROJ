@@ -10,15 +10,20 @@
     min-width: 150px;
     padding: 5px;
     background-color: #fff;
-    color: #6f6f6f;
+    color: #35bcd9;
     border: none;
 }
 
 .consult{
     min-width: 100px;
     padding: 5px;
-    background-color: #a9a98d;
+    background-color: #35bcd9;
     color: white;
     border-radius: 15px;
     border: none;
+}
+.consult:hover{
+    background-color: #DC901D;
+    transition: .3s;
+
 }

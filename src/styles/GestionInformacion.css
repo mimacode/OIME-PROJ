@@ -1,6 +1,9 @@
 button.accordion-button::after {
     background-image: url('../assets/add-circle-svgrepo-com.svg');
 }
+button.accordion-button:not(.collapsed)::after {
+    background-image: url('../assets/remove-ellipse-svgrepo-com.svg');
+}
 .section-gestion-oime{
     width: 450px; /* width de la base en donde se renderiza el acordeón */
     min-height: 300px; 
@@ -19,7 +22,6 @@ button.accordion-button::after {
     font-weight: bold;
 }
 .accordion-header button{
-    font-size: 12px;
     font-weight: bold;
     justify-content: space-between;
     gap: 15px;
@@ -30,12 +32,31 @@ button.accordion-button:not(.collapsed){
 .accordion, .accordion-item{
     width: 100%;
 }
-.accordion-button:focus {
-    box-shadow: none !important;
-    border-color: #35bcd9 !important;
+button.accordion-button:focus {
+    box-shadow: none;
 }
-
 button.accordion-button, button.accordion-button:not(.collapsed){
     color: #35bcd9;
-    background-color: #fff ;
+    background-color: #fff ; /* quitar el background de azul del acordeón por defecto */
+}
+
+div.css-1xc3v61-indicatorContainer svg{  /* downArrows de los selects*/
+    color: #35bcd9;
+    
+}
+div.css-15lsz6c-indicatorContainer svg{ /* rotate arrow to up when click on select */
+    color: #35bcd9;
+    transform: rotate(180deg);
+    transition-duration: .3s;
+}
+div.css-t3ipsp-control, .css-13cymwt-control{
+    border: .5px solid #35bcd9;
+    box-shadow: 0 0 0 1px #35bcd9;
+}
+div.css-t3ipsp-control:hover, .css-13cymwt-control:hover{
+    border: .5px solid #35bcd9;
+}
+div.css-13cymwt-control{
+    border: .5px solid #3333333a;
+    box-shadow: none;
 }

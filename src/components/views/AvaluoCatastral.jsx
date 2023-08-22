@@ -6,8 +6,8 @@ export  function AvaluoCatastral() {
   return (
     <section className='ContainerGlobal'>
         <div className='containerOfferType'>
-            <CheckBox name='Actual'/>
-            <CheckBox name='Histórico'/>
+            <CheckBox title='Actual'/>
+            <CheckBox title='Histórico'/>
         </div>  
         <div className='ContainerButtons'>
             <Buttons/>
