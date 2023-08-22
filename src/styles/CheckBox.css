@@ -1,0 +1,19 @@
+.ContainerCheck {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin-top: 5px;
+  }
+  
+  .ContainerCheck img {
+    width: 18px;
+  }
+  
+
+  
+  .checked-text {
+    color: black; /* Cambia el color del texto cuando el checkbox está marcado */
+  }
+  
+  /* Resto de tus estilos... */
+  

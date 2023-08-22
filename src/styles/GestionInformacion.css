@@ -1,0 +1,41 @@
+button.accordion-button::after {
+    background-image: url('../assets/add-circle-svgrepo-com.svg');
+}
+.section-gestion-oime{
+    width: 450px; /* width de la base en donde se renderiza el acordeón */
+    min-height: 300px; 
+    background-color: white;
+    border: 1px solid #35bcd9;
+    border-radius: 25px;
+    font-size: 14px;
+    display: grid;
+    place-items: center;
+    padding: 20px 15px 6px 15px;
+}
+.section-gestion-oime p > span, p {
+    color: black;
+}
+.section-gestion-oime span {
+    font-weight: bold;
+}
+.accordion-header button{
+    font-size: 12px;
+    font-weight: bold;
+    justify-content: space-between;
+    gap: 15px;
+}
+button.accordion-button:not(.collapsed){
+    box-shadow: inset 0 calc(-1 * 1px) 0 #35bcd9;  
+}
+.accordion, .accordion-item{
+    width: 100%;
+}
+.accordion-button:focus {
+    box-shadow: none !important;
+    border-color: #35bcd9 !important;
+}
+
+button.accordion-button, button.accordion-button:not(.collapsed){
+    color: #35bcd9;
+    background-color: #fff ;
+}

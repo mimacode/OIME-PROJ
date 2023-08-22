@@ -1,0 +1,67 @@
+/* Globales */
+.ContainerGlobal{
+    width: 100%;
+/*     background-color: #d3d3d3; */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+}
+.containerOfferType {
+    display: flex;
+    gap: 25px;
+}
+.containerSector{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+}
+.selector{
+    width: 50%;
+    min-width: 170px;
+}
+label{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.containerCheckBoxPredio {
+    display: flex;
+    gap: 30px;
+}
+
+.cointainerYear{
+    width: 100%;
+}
+.ContainerAreas{
+    width: 100%;
+    height: auto;
+    
+}
+.ContainerAreas div{
+    display: flex;
+    gap: 10px;
+}
+
+.accordion-header div.collapse.show {
+    border-bottom: 1px solid #35bcd9;
+}
+.accordion-header .accordion-button{
+    font-size: 15px;
+}
+.accordion div.accordion-item {
+    border: 1px solid #35bcd9;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+span.css-1u9des2-indicatorSeparator{
+    display: none;
+}
+/* Zona Geoeconomica */
+
+.Zones{
+    padding-left: 20px;
+}
