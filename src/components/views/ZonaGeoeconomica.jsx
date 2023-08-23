@@ -42,8 +42,9 @@ const handleChangeSelect= (e,name) => {
           <label>Año</label>
         <SelectComponent name='year' value={filtros.year} onChange={handleChangeSelect} options={Year}></SelectComponent>
         </div>
-        <div className="containerButtons">
-          <Buttons></Buttons>
+        <div className='contendeorBotones'>
+            <Buttons clase = 'clear' title = 'Limpiar campos'></Buttons>
+            <Buttons clase = 'consult' title = 'Consultar'></Buttons>
         </div>
 
   </section>

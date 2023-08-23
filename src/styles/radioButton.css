@@ -1,0 +1,9 @@
+:root{
+    --Monserrat: 'Montserrat', sans-serif;
+    --WorkSans: 'Work Sans', sans-serif;
+}
+label{
+    font-family: var(--WorkSans);
+    font-size: 14px;
+    color: black;
+}

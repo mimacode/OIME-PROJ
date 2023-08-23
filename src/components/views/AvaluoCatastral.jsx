@@ -9,8 +9,9 @@ export  function AvaluoCatastral() {
             <CheckBox title='Actual'/>
             <CheckBox title='Histórico'/>
         </div>  
-        <div className='ContainerButtons'>
-            <Buttons/>
+        <div className='contendeorBotones'>
+            <Buttons clase = 'clear' title = 'Limpiar campos'></Buttons>
+            <Buttons clase = 'consult' title = 'Consultar'></Buttons>
         </div>
     </section>
   )

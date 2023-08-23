@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { OfertaInmobiliaria } from './OfertaInmobiliaria';
 import { ZonaGeoconomica } from './ZonaGeoeconomica'
 import { ZonasFisicas } from './ZonasFisicas'
-import { AvaluoCatastral } from './AvaluoCatastral'; 
+import { InformacionCatastral } from './InformacionCatastral'; 
 
 
 export function GestionInformacion() {
@@ -43,14 +43,14 @@ export function GestionInformacion() {
         <Accordion.Item eventKey='4'>
           <Accordion.Header>Información catastral</Accordion.Header>
           <Accordion.Body>
-            <AvaluoCatastral/>
+            <InformacionCatastral/>
           </Accordion.Body>
         </Accordion.Item>
 
         <Accordion.Item eventKey='5'>
           <Accordion.Header>Buscar dirección</Accordion.Header>
           <Accordion.Body>
-            <AvaluoCatastral/>
+            <InformacionCatastral/>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion> 

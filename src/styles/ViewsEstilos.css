@@ -1,3 +1,7 @@
+:root{
+    --Monserrat: 'Montserrat', sans-serif;
+    --WorkSans: 'Work Sans', sans-serif;
+}
 .ContainerGlobal{
     width: 100%;
 /*     background-color: #d3d3d3; */
@@ -48,6 +52,9 @@ label{
     display: flex;
     gap: 10px;
 }
+.ContainerAreas, .containerPredio{
+    margin-top: 20px;
+}
 .ContainerAreas .Container{
     width: 50%;
 }
@@ -81,3 +88,30 @@ span.css-1u9des2-indicatorSeparator{
 .Zones{
     padding-left: 20px;
 }
+.contendeorBotones{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Informacion catastral */
+
+.containerInformacion h5{
+    font-family: var(--Monserrat);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.containerInformacion p{
+    font-family: var(--WorkSans);
+    font-size: 10px;
+    Text-align:justify;
+}
+.ContainerRadios{
+    display: flex;
+    gap: 35px;
+}
+
+
+
+

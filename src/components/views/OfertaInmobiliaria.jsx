@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 export function OfertaInmobiliaria() {
     const initialStateFiltros = {tipo_oferta: [], comuna: "-1", barrios: null, tipo_predio:[] , year: null, area_minima:'', area_maxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
+    const [showHola, setShowHola] = useState(false); // Estado para controlar la visibilidad de <h1>
 
 const handleChange= (e) => {
 /*     debugger; */
@@ -44,6 +45,12 @@ const handleChangeCheck= (e) => {
     }
     setFiltros({...filtros, [e.target.name]: checkvalues})  //se agrega los valores de los filtros a setFiltros
 }
+
+const onHandleClickButton = () => {
+    console.log('holaa');
+    setShowHola(true);
+  };
+  
 
   return (
      <section className='ContainerGlobal'>
@@ -80,7 +87,34 @@ const handleChangeCheck= (e) => {
                 <InputAreas name="area_maxima" value={filtros.area_maxima} onChange={handleChange} placeholder= 'Máximo' required={true}/>
             </div>
         </div>
-        <Buttons></Buttons>
+        <div className='contendeorBotones'>
+            <Buttons clase = 'clear' title = 'Limpiar campos' onClick={onHandleClickButton}></Buttons>
+            <Buttons clase = 'consult' title = 'Consultar' onClick={onHandleClickButton}></Buttons>
+        </div>
+
+        {showHola &&  //Mostrar <h1> si showHola es true
+        <div className='ContainerResultados'>
+            <div className='encabezado'>
+                <h3>Rsultados de su consulta</h3>
+                <div><span></span> <p>Descargar informe</p></div>
+            </div>
+            <div className='description'>
+                <p>Numero de ofertas en general:</p>
+                <div className='tipoOferta'>
+                    <p>Venta:</p>
+                    <span></span>
+                </div>
+                <div className='tipoOferta'>
+                    <p>Arriendo:</p>
+                    <span></span>
+                </div>
+           <div>
+            
+           </div>    
+            </div>
+            <h1>Hola</h1>
+        </div>
+        } 
     </section> 
   )
 }

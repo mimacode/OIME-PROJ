@@ -37,8 +37,9 @@ export function ZonasFisicas() {
             <CheckBox title='Zonas Homogéneas Urbanas' value={1} name='zonas' checked={filtros.zonas.includes('1')} onChange={handleChangeCheck} ></CheckBox>
             <CheckBox title='Zonas Homogéneas rurales' value={2} name='zonas' checked={filtros.zonas.includes('2')} onChange={handleChangeCheck} ></CheckBox>
         </div>
-        <div className='ContainerButtons'>
-            <Buttons/>
+        <div className='contendeorBotones'>
+            <Buttons clase = 'clear' title = 'Limpiar campos'></Buttons>
+            <Buttons clase = 'consult' title = 'Consultar'></Buttons>
         </div>
   </section>
   )
