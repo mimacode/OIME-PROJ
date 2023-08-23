@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 
 
 export function OfertaInmobiliaria() {
-    const initialStateFiltros = {tipo_oferta: [], comuna: "-1", barrios: null, tipo_predio:[] , year: null, area_minima:null, area_maxima:null} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
+    const initialStateFiltros = {tipo_oferta: [], comuna: "-1", barrios: null, tipo_predio:[] , year: null, area_minima:'', area_maxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
 
 const handleChange= (e) => {
@@ -53,16 +53,16 @@ const handleChangeCheck= (e) => {
         </div>
         <div className="containerSector">
             <div className='selector'>
-                <label><b>Comunas</b></label>
+                <label>Comuna</label>
                <SelectComponent name='comuna' options={comunas} value={filtros.comuna} onChange={handleChangeSelect} ></SelectComponent>
             </div>
             <div className='selector'>
-                <label><b>Barrios</b></label>
+                <label>Barrio</label>
                 <SelectComponent name='barrios' options={barrios} value={filtros.barrios} onChange={handleChangeSelect}></SelectComponent>
             </div>
         </div>
         <div className="containerPredio">
-            <label><b>Tipo de predio</b></label>
+            <label>Tipo de predio</label>
             <div className='containerCheckBoxPredio'>
                 <CheckBox name='tipo_predio' title= 'Apartamento' value={1} checked={filtros.tipo_predio.includes("1")} onChange={handleChangeCheck} icon={IconApartment} checkedIcon={ModifiedIconApartment}></CheckBox> 
                 <CheckBox name='tipo_predio' title= 'Casa' value={2} checked={filtros.tipo_predio.includes("2")} onChange={handleChangeCheck} icon={IconHouse} checkedIcon={ModifiedIconHouse}></CheckBox>
@@ -70,14 +70,14 @@ const handleChangeCheck= (e) => {
             </div>
         </div>
         <div className="cointainerYear">
-            <label><b>Año</b></label>
+            <label>Año</label>
             <SelectComponent name='year' options={Year} value={filtros.year} onChange={handleChangeSelect}></SelectComponent>
         </div>
         <div className="ContainerAreas">
-            <label><b>Áreas</b></label>
+            <label>Áreas</label>
             <div>
-                <InputAreas name={"area_minima"} value={filtros.area_minima} onChange={handleChange} placeholder= 'Mínimo' required={true}/>
-                <InputAreas name={"area_maxima"} value={filtros.area_maxima} onChange={handleChange} placeholder= 'Máximo' required={true}/>
+                <InputAreas name="area_minima" value={filtros.area_minima} onChange={handleChange} placeholder= 'Mínimo' required={true}/>
+                <InputAreas name="area_maxima" value={filtros.area_maxima} onChange={handleChange} placeholder= 'Máximo' required={true}/>
             </div>
         </div>
         <Buttons></Buttons>

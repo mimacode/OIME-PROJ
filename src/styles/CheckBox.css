@@ -1,3 +1,7 @@
+:root{
+  --Monserrat: 'Montserrat', sans-serif;
+  --WorkSans: 'Work Sans', sans-serif;
+}
 .ContainerCheck {
     display: flex;
     align-items: baseline;
@@ -8,7 +12,10 @@
   .ContainerCheck img {
     width: 18px;
   }
-  
+  .ContainerCheck p{
+    font-family: var(--Monserrat);
+    font-size: 14px;
+  }
   .checked-text {
     color: black; /* Cambia el color del texto cuando el checkbox está marcado */
   }
@@ -55,4 +62,3 @@
   input.custom:checked::after {
     opacity: 1; /* Muestra cuando está marcado */
   }
-  

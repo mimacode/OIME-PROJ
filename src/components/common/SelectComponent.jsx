@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* import PropTypes from "prop-types"; */
 import  Select from 'react-select';
 
 export function SelectComponent({options, name, onChange}) {
@@ -7,8 +7,8 @@ export function SelectComponent({options, name, onChange}) {
   )
 }
 
-SelectComponent.propTypes = {
+/* SelectComponent.propTypes = {
     name: PropTypes.string,
     options : PropTypes.array.isRequired,
     onChange : PropTypes.func,
-}
+} */

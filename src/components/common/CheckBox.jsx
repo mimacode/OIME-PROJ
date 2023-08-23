@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* import PropTypes from "prop-types"; */
 import '../../styles/CheckBox.css'
 
 export function CheckBox({ title, name, icon, checkedIcon, value, checked ,onChange}) { // Agrega el prop checkedIcon
@@ -25,13 +25,14 @@ export function CheckBox({ title, name, icon, checkedIcon, value, checked ,onCha
   );
 }
 
-CheckBox.propTypes = {
+/* CheckBox.propTypes = {
     title: PropTypes.string,
     name: PropTypes.string.isRequired,
     icon: PropTypes.string,
     checkedIcon: PropTypes.string, // Agrega la prop checkedIcon
-    value: PropTypes.string,
+    value: PropTypes.number,
     checked: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
 }
 
+ */

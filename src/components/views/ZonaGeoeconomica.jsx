@@ -39,9 +39,7 @@ const handleChangeSelect= (e,name) => {
         </div>
         
         <div className='cointainerYear'>
-          <label>
-              <b>Año</b>
-          </label>
+          <label>Año</label>
         <SelectComponent name='year' value={filtros.year} onChange={handleChangeSelect} options={Year}></SelectComponent>
         </div>
         <div className="containerButtons">

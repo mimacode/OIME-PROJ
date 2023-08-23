@@ -1,3 +1,7 @@
+:root{
+    --Monserrat: 'Montserrat', sans-serif;
+    --WorkSans: 'Work Sans', sans-serif;
+  }
 .containerButtons{
     display: flex;
     gap: 5px;
@@ -12,6 +16,8 @@
     background-color: #fff;
     color: #35bcd9;
     border: none;
+    font-family: var(--Monserrat);
+    font-size: 13px;
 }
 
 .consult{
@@ -21,6 +27,8 @@
     color: white;
     border-radius: 15px;
     border: none;
+    font-family: var(--Monserrat);
+    font-size: 13px;
 }
 .consult:hover{
     background-color: #DC901D;

@@ -1,4 +1,3 @@
-/* Globales */
 .ContainerGlobal{
     width: 100%;
 /*     background-color: #d3d3d3; */
@@ -16,6 +15,11 @@
     width: 100%;
     justify-content: space-between;
     gap: 10px;
+}
+.containerSector label, .containerPredio label, .cointainerYear label, .ContainerAreas label{
+    font-family: var(--Monserrat);
+    font-size: 14px;
+    font-weight: 600;
 }
 .selector{
     width: 50%;
@@ -44,17 +48,29 @@ label{
     display: flex;
     gap: 10px;
 }
+.ContainerAreas .Container{
+    width: 50%;
+}
+button.accordion-button:focus:not(.collapsed){
+    box-shadow: inset 0 calc(-1 * 1px) 0 #35bcd9;
+}
+
+/* .accordion-collapse{
+    border-top: 1px solid #35bcd9;
+} */
 
 .accordion-header div.collapse.show {
     border-bottom: 1px solid #35bcd9;
 }
-.accordion-header .accordion-button{
-    font-size: 15px;
+.accordion-header button.accordion-button{
+    font-family: var(--Monserrat);
+    font-weight: 600;
+    font-size: 14px;
 }
 .accordion div.accordion-item {
     border: 1px solid #35bcd9;
     margin-bottom: 5px;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 span.css-1u9des2-indicatorSeparator{
