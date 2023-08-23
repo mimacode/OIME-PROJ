@@ -113,5 +113,97 @@ span.css-1u9des2-indicatorSeparator{
 }
 
 
+/* Resultados desplegables oferta inmobiliaraia */
 
+.ContainerResultados{
+    margin-top: 10px;
+    border-radius: 3px;
+}
+.encabezado{
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--Monserrat);
 
+}
+.encabezado h3{
+    font-size: 16px;
+    font-weight: 600;
+}
+.encabezado #enlace{
+    font-size: 13px;
+    color: #35bcd9;
+    text-decoration: none;
+    
+}
+.encabezado div{
+    display: flex;
+    align-items: flex-start;
+    display: flex;
+    gap: 8px;
+}
+.encabezado img{
+    width: 20px;
+}
+.description{
+    font-family: var(--WorkSans);
+    display: flex;
+    gap: 30px;
+}
+.description p{
+    font-size:14px;
+}
+.description h5{
+    font-size: 12px;
+    font-weight: 500;
+}
+.tipoOferta{
+    display: flex;
+    gap: 20px;
+}
+.tipoOferta p{
+    font-size:14px;
+    font-weight: 600;
+}
+.tipoOferta span{
+    color: #35bcd9;
+}
+.containerTable{
+    display: grid;
+    justify-content: center;
+
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: center; /* Centro de todo el texto */
+  }
+
+  th {
+    background-color: #f2f2f2; /* Color de fondo para el encabezado */
+  }
+
+  tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Borde inferior de las filas */
+  }
+
+  tr:last-child {
+    border-bottom: none; /* No aplicar borde en la última fila */
+  }
+
+/*   tr:nth-child(even) {
+    background-color: #f2f2f2; 
+  } */
+
+  tr:nth-child(odd) {
+    background-color: #ffffff; /* Color de fondo para filas impares */
+  }
+
+  td:first-child {
+    padding-left: 15px; /* Espacio entre elementos */
+  }

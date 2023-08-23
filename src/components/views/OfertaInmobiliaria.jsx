@@ -11,6 +11,7 @@ import { SelectComponent } from '../common/SelectComponent';
 import { comunas, barrios, Year } from '../../data/inputSelects'; 
 import { InputAreas } from '../common/InputAreas';
 import { useEffect, useState } from 'react';
+import file from '../../assets/file.svg';
 
 
 export function OfertaInmobiliaria() {
@@ -95,24 +96,44 @@ const onHandleClickButton = () => {
         {showHola &&  //Mostrar <h1> si showHola es true
         <div className='ContainerResultados'>
             <div className='encabezado'>
-                <h3>Rsultados de su consulta</h3>
-                <div><span></span> <p>Descargar informe</p></div>
+                <h3>Resultados de su consulta</h3>
+                <div>
+                    <img src={file} id='file'></img>
+                    <a href='https://www.google.com' target='blank' id='enlace'>Descargar informe</a></div>
             </div>
             <div className='description'>
-                <p>Numero de ofertas en general:</p>
+                <p>Número de ofertas en general:</p>
                 <div className='tipoOferta'>
                     <p>Venta:</p>
-                    <span></span>
+                    <span>155</span> {/* sujeto a calculos */}
                 </div>
                 <div className='tipoOferta'>
                     <p>Arriendo:</p>
-                    <span></span>
+                    <span>260</span> {/* sujeto a calculos */}
                 </div>
-           <div>
-            
-           </div>    
             </div>
-            <h1>Hola</h1>
+           <div className='containerTable'>
+                <table>
+                    <tr>
+                        <th>Tipo de inmueble</th>
+                        <th>Promedio venta m2</th>
+                        <th>Promedio arriendo m2</th>
+                    </tr>
+                    <tr>
+                        <td>Apartamento</td>
+                        <td>2300</td>
+                        <td>104</td>
+                    </tr>
+                    <tr>
+                        <td>Casa</td>
+                        <td>2035</td>
+                        <td>54654</td>
+                    </tr>
+                </table>
+            </div>    
+            <div className='descriptionTwo'>
+                <p>Número de ofertas en general:</p>
+            </div>
         </div>
         } 
     </section> 
