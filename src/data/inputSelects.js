@@ -18,12 +18,15 @@ export const comunas = [
   ]
 
   export const barrios = [
-    { value: 'opcion1', label: 'opcion 1' },
-    { value: 'opcion2', label: 'opcion 2' },
-    { value: 'opcion3', label: 'opcion 3' },
-    { value: 'opcion4', label: 'opcion 4' },
-    { value: 'opcion5', label: 'opcion 5' },
-    { value: 'opcion6', label: 'Comuna 6' },
+    { value: 'BELEN', label: 'BELEN' },
+    { value: 'CANDELARIA', label: 'LA CANDELARIA' },
+    { value: 'PALMA', label: 'LA PALMA' },
+    { value: 'Poblado', label: 'EL POBLADO' },
+    { value: 'BOSTON', label: 'BOSTON' },
+    { value: 'PROGRESO', label: 'PROGRESO' },
+    { value: 'GUAYABAL', label: 'GUAYABAL' },
+    { value: 'FLORIDA', label: 'LA FLORIDA' },
+    { value: 'SIMESA', label: 'SIMESA' },
   ]
 
   export const Year = [

@@ -221,6 +221,6 @@ table {
     display: flex;
     gap: 25px;
   }
-  .Container::focus{
+  .Container:focus{
     border: 1px solid var(--BluePrimary);
   }

@@ -3,7 +3,6 @@ import '../../styles/ViewsEstilos.css';
 import { RadioBoton } from '../common/RadioBoton';
 import { SelectComponent } from '../common/SelectComponent';
 import { Buttons } from '../common/Buttons';
-import { InputAreas } from '../common/InputAreas';
 
 export const InformacionCatastral = () => {
   const initialStateFiltros = {

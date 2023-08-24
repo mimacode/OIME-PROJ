@@ -15,49 +15,45 @@ import file from '../../assets/file.svg';
 
 
 export function OfertaInmobiliaria() {
-    const initialStateFiltros = {tipo_oferta: [], comuna: "-1", barrios: null, tipo_predio:[] , year: null, area_minima:'', area_maxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
+    const initialStateFiltros = {tipoOferta: [], comuna: null, barrios: null, tipoPredio:[] , year: null, area_minima:null, area_maxima:null} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
     const [showHola, setShowHola] = useState(false); // Estado para controlar la visibilidad de <h1>
 
-const handleChange= (e) => {
-/*     debugger; */
-    setFiltros({...filtros, [e.target.name]: e.target.value})
-}
-
-const handleChangeSelect= (e,name) => {
-/*     debugger; */
-    let value = e ? e.value : null;
-    setFiltros({...filtros, [name]: value})
-}
-
-useEffect(() => {
-    console.log(filtros);
-}, [filtros]) 
-
-
-const handleChangeCheck= (e) => {
-    let checkvalues = filtros[e.target.name]  //e obtiene el arreglo actual de valores seleccionados del estado filtros utilizando el nombre del checkbox como clave
-    console.log(e.target.name, checkvalues);
-    if(checkvalues.includes(e.target.value)){ //verifica si el checkbox está marcado
-        checkvalues = checkvalues.filter(value => value !== e.target.value) 
-        /* quí, el método filter se utiliza para crear un nuevo arreglo que excluye el valor que deseas remover (el valor del checkbox que se desmarca). value => value !== e.target.value es una función de filtro que excluye cualquier elemento que sea igual al valor del checkbox.Entonces, cuando el checkbox está marcado y se ejecuta este bloque, se está removiendo el valor del arreglo checkvalues. En esencia, esto significa que se está desmarcando la opción que ya estaba seleccionada. */
-    }else{
-        checkvalues.push(e.target.value)
+    const handleChangeCheck= (e) => { //Evento para controlar el checkbox de tipo de oferta y tipo de predio
+        let checkvalues = filtros[e.target.name]  //e obtiene el arreglo actual de valores seleccionados del estado filtros utilizando el nombre del checkbox como clave
+        console.log(e.target.name, checkvalues);
+        if(checkvalues.includes(e.target.value)){ //verifica si el checkbox está marcado
+            checkvalues = checkvalues.filter(value => value !== e.target.value) 
+            /* quí, el método filter se utiliza para crear un nuevo arreglo que excluye el valor que deseas remover (el valor del checkbox que se desmarca). value => value !== e.target.value es una función de filtro que excluye cualquier elemento que sea igual al valor del checkbox.Entonces, cuando el checkbox está marcado y se ejecuta este bloque, se está removiendo el valor del arreglo checkvalues. En esencia, esto significa que se está desmarcando la opción que ya estaba seleccionada. */
+        }else{
+            checkvalues.push(e.target.value)
+        }
+        setFiltros({...filtros, [e.target.name]: checkvalues})  //se agrega los valores de los filtros a setFiltros
     }
-    setFiltros({...filtros, [e.target.name]: checkvalues})  //se agrega los valores de los filtros a setFiltros
-}
+    
+    const handleChangeSelect= (e,name) => { //Evento para controlar el select de comuna, barrio, anio
+        let value = e ? e.value : null;
+        setFiltros({...filtros, [name]: value})
+    }
 
-const onHandleClickButton = () => {
-    console.log('holaa');
-    setShowHola(true);
-  };
-  
+    const handleChange= (e) => { //Evento para controlar el input de areas
+        setFiltros({...filtros, [e.target.name]: e.target.value})
+    }
 
-  return (
-     <section className='ContainerGlobal'>
+    const onHandleClickButton = () => { //Evento para controlar la vista desplegable de los resultados despues de dar click
+        console.log('holaa');
+        setShowHola(true);
+    };
+    
+    useEffect(() => {
+        console.log(filtros);
+    }, [filtros]) 
+    
+    return (
+        <section className='ContainerGlobal'>
         <div className="containerOfferType">
-            <CheckBox name ='tipo_oferta' title='Venta' value={1} checked={filtros.tipo_oferta.includes("1")} onChange={handleChangeCheck}></CheckBox>
-            <CheckBox name="tipo_oferta" title='Arriendo' value={2} checked={filtros.tipo_oferta.includes("2")} onChange={handleChangeCheck}></CheckBox>
+            <CheckBox name ='tipoOferta' title='Venta' value={1} checked={filtros.tipoOferta.includes("1")} onChange={handleChangeCheck}></CheckBox>
+            <CheckBox name="tipoOferta" title='Arriendo' value={2} checked={filtros.tipoOferta.includes("2")} onChange={handleChangeCheck}></CheckBox>
         </div>
         <div className="containerSector">
             <div className='selector'>
@@ -72,9 +68,9 @@ const onHandleClickButton = () => {
         <div className="containerPredio">
             <label>Tipo de predio</label>
             <div className='containerCheckBoxPredio'>
-                <CheckBox name='tipo_predio' title= 'Apartamento' value={1} checked={filtros.tipo_predio.includes("1")} onChange={handleChangeCheck} icon={IconApartment} checkedIcon={ModifiedIconApartment}></CheckBox> 
-                <CheckBox name='tipo_predio' title= 'Casa' value={2} checked={filtros.tipo_predio.includes("2")} onChange={handleChangeCheck} icon={IconHouse} checkedIcon={ModifiedIconHouse}></CheckBox>
-                <CheckBox name='tipo_predio' title= 'Bodega' value={3} checked={filtros.tipo_predio.includes("3")} onChange={handleChangeCheck} icon={IconBodega} checkedIcon={ModifiedIconBodega}></CheckBox>
+                <CheckBox name='tipoPredio' title= 'Apartamento' value={1} checked={filtros.tipoPredio.includes("1")} onChange={handleChangeCheck} icon={IconApartment} checkedIcon={ModifiedIconApartment}></CheckBox> 
+                <CheckBox name='tipoPredio' title= 'Casa' value={2} checked={filtros.tipoPredio.includes("2")} onChange={handleChangeCheck} icon={IconHouse} checkedIcon={ModifiedIconHouse}></CheckBox>
+                <CheckBox name='tipoPredio' title= 'Bodega' value={3} checked={filtros.tipoPredio.includes("3")} onChange={handleChangeCheck} icon={IconBodega} checkedIcon={ModifiedIconBodega}></CheckBox>
             </div>
         </div>
         <div className="cointainerYear">
