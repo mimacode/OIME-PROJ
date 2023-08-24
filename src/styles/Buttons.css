@@ -1,6 +1,7 @@
 :root{
     --Monserrat: 'Montserrat', sans-serif;
     --WorkSans: 'Work Sans', sans-serif;
+    --BluePrimary: #35BCD9;
   }
 .containerButtons{
     display: flex;
@@ -14,7 +15,7 @@
     min-width: 150px;
     padding: 5px;
     background-color: #fff;
-    color: #35bcd9;
+    color: var(--BluePrimary);
     border: none;
     font-family: var(--Monserrat);
     font-size: 13px;
@@ -23,7 +24,7 @@
 .consult{
     min-width: 100px;
     padding: 5px;
-    background-color: #35bcd9;
+    background-color: var(--BluePrimary);
     color: white;
     border-radius: 15px;
     border: none;
@@ -31,7 +32,7 @@
     font-size: 13px;
 }
 .consult:hover{
-    background-color: #DC901D;
+    background-color: #FF9B52;
     transition: .3s;
 
 }

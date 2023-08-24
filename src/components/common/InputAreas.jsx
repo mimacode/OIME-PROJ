@@ -26,7 +26,7 @@ export const InputAreas = ({ placeholder, required, value, onChange, name }) => 
         onFocus={onInputFocus}
         onBlur={onInputBlur}
       />
-      <span><b>m2</b></span>
+      <span><b>m<sup>2</sup></b></span>
     </div>
   );
 };

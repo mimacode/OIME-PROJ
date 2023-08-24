@@ -1,6 +1,7 @@
 :root{
   --Monserrat: 'Montserrat', sans-serif;
   --WorkSans: 'Work Sans', sans-serif;
+  --BluePrimary: #35BCD9;
 }
 .ContainerCheck {
     display: flex;
@@ -39,7 +40,7 @@
   }
   
   input.custom:checked {
-    color: #35bcd9;
+    color: var(--BluePrimary);
   }
   
   input.custom::after {

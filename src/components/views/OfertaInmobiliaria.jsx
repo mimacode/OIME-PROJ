@@ -101,38 +101,59 @@ const onHandleClickButton = () => {
                     <img src={file} id='file'></img>
                     <a href='https://www.google.com' target='blank' id='enlace'>Descargar informe</a></div>
             </div>
-            <div className='description'>
-                <p>Número de ofertas en general:</p>
-                <div className='tipoOferta'>
-                    <p>Venta:</p>
-                    <span>155</span> {/* sujeto a calculos */}
+            <div className='ContainerScroll'>
+                <div className='description'>
+                    <p>Número de ofertas en general:</p>
+                    <div className='tipoOferta'>
+                        <p>Venta:</p>
+                        <span>155</span> {/* sujeto a calculos */}
+                    </div>
+                    <div className='tipoOferta'>
+                        <p>Arriendo:</p>
+                        <span>260</span> {/* sujeto a calculos */}
+                    </div>
                 </div>
-                <div className='tipoOferta'>
-                    <p>Arriendo:</p>
-                    <span>260</span> {/* sujeto a calculos */}
+                <div className='containerTable FirstTable'>
+                    <table>
+                        <tr>
+                            <th>Tipo de inmueble</th>
+                            <th>Promedio venta m<sup>2</sup></th>
+                            <th>Promedio arriendo m<sup>2</sup></th>
+                        </tr>
+                        <tr>
+                            <td>Apartamento</td>
+                            <td>2300</td>
+                            <td>104</td>
+                        </tr>
+                        <tr>
+                            <td>Casa</td>
+                            <td>2035</td>
+                            <td>54654</td>
+                        </tr>
+                    </table>
+                </div>    
+                <div className='descriptionTwo'>
+                    <p>Otro ítem con información de valor</p>
                 </div>
-            </div>
-           <div className='containerTable'>
-                <table>
-                    <tr>
-                        <th>Tipo de inmueble</th>
-                        <th>Promedio venta m2</th>
-                        <th>Promedio arriendo m2</th>
-                    </tr>
-                    <tr>
-                        <td>Apartamento</td>
-                        <td>2300</td>
-                        <td>104</td>
-                    </tr>
-                    <tr>
-                        <td>Casa</td>
-                        <td>2035</td>
-                        <td>54654</td>
-                    </tr>
-                </table>
-            </div>    
-            <div className='descriptionTwo'>
-                <p>Número de ofertas en general:</p>
+                <div className='containerTable'>
+                    <table>
+                        <tr>
+                            <th>Tipo de inmueble</th>
+                            <th>Promedio venta m<sup>2</sup></th>
+                            <th>Promedio arriendo m<sup>2</sup></th>
+                        </tr>
+                        <tr>
+                            <td>Apartamento</td>
+                            <td>2300</td>
+                            <td>104</td>
+                        </tr>
+                        <tr>
+                            <td>Casa</td>
+                            <td>2035</td>
+                            <td>54654</td>
+                        </tr>
+                    </table>
+                </div>    
             </div>
         </div>
         } 

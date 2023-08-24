@@ -1,3 +1,8 @@
+:root{
+    --Monserrat: 'Montserrat', sans-serif;
+    --WorkSans: 'Work Sans', sans-serif;
+    --BluePrimary: #35BCD9;
+}
 .Container{
     border: 1px solid #3333333a;
     display: flex;
@@ -15,5 +20,5 @@ input[type=number]::-webkit-inner-spin-button {
   }
   
 div.active{
-    border: 2px solid #35bcd9;
+    border: 2px solid var(--BluePrimary);
 }

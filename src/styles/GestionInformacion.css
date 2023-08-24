@@ -1,9 +1,15 @@
 :root{
     --Monserrat: 'Montserrat', sans-serif;
     --WorkSans: 'Work Sans', sans-serif;
+    --BluePrimary: #35BCD9;
 }
 button.accordion-button::after {
+    width: 20px;
+    height: 20px;
     background-image: url('../assets/add-circle-svgrepo-com.svg');
+    background-size: contain; /* Ajusta el tamaño del fondo para mantener la relación de aspecto */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 button.accordion-button:not(.collapsed)::after {
     background-image: url('../assets/remove-ellipse-svgrepo-com.svg');
@@ -12,7 +18,7 @@ button.accordion-button:not(.collapsed)::after {
     width: 566px; /* width de la base en donde se renderiza el acordeón */
     min-height: 470px; 
     background-color: white;
-    border: 1px solid #35bcd9;
+    border: 1px solid var(--BluePrimary);
     border-radius: 24px;
     font-size: 14px;
     display: flex;
@@ -44,7 +50,7 @@ button.accordion-button:not(.collapsed)::after {
     gap: 15px;
 }
 button.accordion-button:not(.collapsed){
-    box-shadow: inset 0 calc(-1 * 1px) 0 #35bcd9;  
+    box-shadow: inset 0 calc(-1 * 1px) 0 var(--BluePrimary);  
 }
 div.accordion{
     display: flex;
@@ -58,25 +64,25 @@ button.accordion-button:focus {
     box-shadow: none;
 }
 button.accordion-button, button.accordion-button:not(.collapsed){
-    color: #35bcd9;
+    color: var(--BluePrimary);
     background-color: #fff ; /* quitar el background de azul del acordeón por defecto */
 }
 
 div.css-1xc3v61-indicatorContainer svg{  /* downArrows de los selects*/
-    color: #35bcd9;
+    color: var(--BluePrimary);
     
 }
 div.css-15lsz6c-indicatorContainer svg{ /* rotate arrow to up when click on select */
-    color: #35bcd9;
+    color: var(--BluePrimary);
     transform: rotate(180deg);
     transition-duration: .3s;
 }
 div.css-t3ipsp-control, .css-13cymwt-control{
-    border: .5px solid #35bcd9;
-    box-shadow: 0 0 0 1px #35bcd9;
+    border: .5px solid var(--BluePrimary);
+    box-shadow: 0 0 0 1px var(--BluePrimary);
 }
 div.css-t3ipsp-control:hover, .css-13cymwt-control:hover{
-    border: .5px solid #35bcd9;
+    border: .5px solid var(--BluePrimary);
 }
 div.css-13cymwt-control{
     border: .5px solid #3333333a;
