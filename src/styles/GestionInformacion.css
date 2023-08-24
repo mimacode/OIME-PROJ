@@ -2,6 +2,7 @@
     --Monserrat: 'Montserrat', sans-serif;
     --WorkSans: 'Work Sans', sans-serif;
     --BluePrimary: #35BCD9;
+    --gray: #efefef;
 }
 button.accordion-button::after {
     width: 20px;
@@ -85,6 +86,6 @@ div.css-t3ipsp-control:hover, .css-13cymwt-control:hover{
     border: .5px solid var(--BluePrimary);
 }
 div.css-13cymwt-control{
-    border: .5px solid #3333333a;
+    border: .5px solid var(--gray);
     box-shadow: none;
 }

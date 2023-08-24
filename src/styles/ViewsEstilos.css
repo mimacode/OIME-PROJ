@@ -2,6 +2,7 @@
     --Monserrat: 'Montserrat', sans-serif;
     --WorkSans: 'Work Sans', sans-serif;
     --BluePrimary: #35BCD9;
+    --gray: #efefef;
 }
 .ContainerGlobal{
     width: 100%;
@@ -180,7 +181,7 @@ span.css-1u9des2-indicatorSeparator{
 table {
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--gray);
     text-align: center;
   }
 
@@ -190,8 +191,8 @@ table {
   }
 
   th {
-    background-color: #f2f2f2; /* Color de fondo para el encabezado */
-  }
+    background-color:  var(--gray); /* Color de fondo para el encabezado */
+}
 
   tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Borde inferior de las filas */
@@ -211,4 +212,15 @@ table {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+  .selectAnio{
+    width: 50%;
+    margin-top: 10px;
+  }
+  .mapaRB{
+    display: flex;
+    gap: 25px;
+  }
+  .Container::focus{
+    border: 1px solid var(--BluePrimary);
   }

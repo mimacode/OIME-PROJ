@@ -2,6 +2,7 @@
     --Monserrat: 'Montserrat', sans-serif;
     --WorkSans: 'Work Sans', sans-serif;
     --BluePrimary: #35BCD9;
+    --gray: #efefef;
   }
 .containerButtons{
     display: flex;

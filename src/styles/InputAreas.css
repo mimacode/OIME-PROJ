@@ -2,9 +2,10 @@
     --Monserrat: 'Montserrat', sans-serif;
     --WorkSans: 'Work Sans', sans-serif;
     --BluePrimary: #35BCD9;
+    --gray: #efefef;
 }
 .Container{
-    border: 1px solid #3333333a;
+    border: 1px solid var(--gray);
     display: flex;
     justify-content: space-between;
     padding:  6px 15px;

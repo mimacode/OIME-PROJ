@@ -46,13 +46,6 @@ export function GestionInformacion() {
             <InformacionCatastral/>
           </Accordion.Body>
         </Accordion.Item>
-
-        <Accordion.Item eventKey='5'>
-          <Accordion.Header>Buscar dirección</Accordion.Header>
-          <Accordion.Body>
-            <InformacionCatastral/>
-          </Accordion.Body>
-        </Accordion.Item>
       </Accordion> 
     
     </section> 

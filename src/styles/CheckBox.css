@@ -2,6 +2,7 @@
   --Monserrat: 'Montserrat', sans-serif;
   --WorkSans: 'Work Sans', sans-serif;
   --BluePrimary: #35BCD9;
+  --gray: #efefef;
 }
 .ContainerCheck {
     display: flex;
@@ -30,7 +31,7 @@
     -webkit-appearance: none;
     border: 2px solid currentColor;
     box-sizing: content-box;
-    color: #999999;
+    color: var(--gray);
     height: 10px;
     width: 10px;
     margin: 0;
