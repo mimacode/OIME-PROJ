@@ -12,13 +12,13 @@ import { comunas, barrios, Year } from '../../data/inputSelects';
 import { InputAreas } from '../common/InputAreas';
 import { useEffect, useState } from 'react';
 import file from '../../assets/file.svg';
-import { fetchData } from '../../fetch/fetch';
-
+import { fetchData } from '../../services/fetchData';
 
 export function OfertaInmobiliaria() {
     const initialStateFiltros = {tipoOferta: [], comuna: null, barrios: null, tipoPredio:[] , year: null, areaMinima:'', areaMaxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
     const [showHola, setShowHola] = useState(false); // Estado para controlar la visibilidad de <h1>
+/*     const [dataResult, setDataResult] = useState({meta: {}, data: []});   */
 
     const handleChangeCheck= (e) => { //Evento para controlar el checkbox de tipo de oferta y tipo de predio
         let checkvalues = filtros[e.target.name]  //e obtiene el arreglo actual de valores seleccionados del estado filtros utilizando el nombre del checkbox como clave
@@ -40,8 +40,11 @@ export function OfertaInmobiliaria() {
         setFiltros({...filtros, [e.target.name]: e.target.value})
     }
 
-    const onHandleClickButton = () => { //Evento para controlar la vista desplegable de los resultados despues de dar click
-        fetchData(filtros);
+    const onHandleClickButton = async() => { //Evento para controlar la vista desplegable de los resultados despues de dar click
+        console.log('hola');
+        let result = await fetchData(filtros);
+        console.log(result);
+/*         setDataResult(result); */
         setShowHola(true);
     };
 
@@ -54,8 +57,8 @@ export function OfertaInmobiliaria() {
     return (
         <section className='ContainerGlobal'>
         <div className="containerOfferType">
-            <CheckBox name ='tipoOferta' title='Venta' value={1} checked={filtros.tipoOferta.includes("1")} onChange={handleChangeCheck}></CheckBox>
-            <CheckBox name="tipoOferta" title='Arriendo' value={2} checked={filtros.tipoOferta.includes("2")} onChange={handleChangeCheck}></CheckBox>
+            <CheckBox name ='tipoOferta' title='Venta' value='SELL' checked={filtros.tipoOferta.includes("SELL")} onChange={handleChangeCheck}></CheckBox>
+            <CheckBox name="tipoOferta" title='Arriendo' value='RENT' checked={filtros.tipoOferta.includes("RENT")} onChange={handleChangeCheck}></CheckBox>
         </div>
         <div className="containerSector">
             <div className='selector'>
@@ -70,9 +73,9 @@ export function OfertaInmobiliaria() {
         <div className="containerPredio">
             <label>Tipo de predio</label>
             <div className='containerCheckBoxPredio'>
-                <CheckBox name='tipoPredio' title= 'Apartamento' value={1} checked={filtros.tipoPredio.includes("1")} onChange={handleChangeCheck} icon={IconApartment} checkedIcon={ModifiedIconApartment}></CheckBox> 
-                <CheckBox name='tipoPredio' title= 'Casa' value={2} checked={filtros.tipoPredio.includes("2")} onChange={handleChangeCheck} icon={IconHouse} checkedIcon={ModifiedIconHouse}></CheckBox>
-                <CheckBox name='tipoPredio' title= 'Bodega' value={3} checked={filtros.tipoPredio.includes("3")} onChange={handleChangeCheck} icon={IconBodega} checkedIcon={ModifiedIconBodega}></CheckBox>
+                <CheckBox name='tipoPredio' title= 'Apartamento' value='APPARTMENT' checked={filtros.tipoPredio.includes("APPARTMENT")} onChange={handleChangeCheck} icon={IconApartment} checkedIcon={ModifiedIconApartment}></CheckBox> 
+                <CheckBox name='tipoPredio' title= 'Casa' value='HOUSE' checked={filtros.tipoPredio.includes("HOUSE")} onChange={handleChangeCheck} icon={IconHouse} checkedIcon={ModifiedIconHouse}></CheckBox>
+                <CheckBox name='tipoPredio' title= 'Bodega' value='WAREHOUSE' checked={filtros.tipoPredio.includes("WAREHOUSE")} onChange={handleChangeCheck} icon={IconBodega} checkedIcon={ModifiedIconBodega}></CheckBox>
             </div>
         </div>
         <div className="cointainerYear">
@@ -82,8 +85,8 @@ export function OfertaInmobiliaria() {
         <div className="ContainerAreas">
             <label>Áreas</label>
             <div>
-                <InputAreas name="area_minima" value={filtros.areaMinima} onChange={handleChange} placeholder= 'Mínimo' required={true}/>
-                <InputAreas name="area_maxima" value={filtros.areaMaxima} onChange={handleChange} placeholder= 'Máximo' required={true}/>
+                <InputAreas name="areaMinima" value={filtros.areaMinima} onChange={handleChange} placeholder= 'Mínimo' required={true}/>
+                <InputAreas name="areaMaxima" value={filtros.areaMaxima} onChange={handleChange} placeholder= 'Máximo' required={true}/>
             </div>
         </div>
         <div className='contendeorBotones'>
