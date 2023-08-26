@@ -9,7 +9,6 @@ export  function ZonaGeoconomica() {
   const initialStateFiltros = {tipo_oferta: [], year: null } /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
   const[filtros, setFiltros] = useState(initialStateFiltros) 
 
-
   const handleChangeCheck= (e) => {
     let checkvalues = filtros[e.target.name]  //e obtiene el arreglo actual de valores seleccionados del estado filtros utilizando el nombre del checkbox como clave
     console.log(e.target.name, checkvalues);
@@ -34,13 +33,27 @@ const handleChangeSelect= (e,name) => {
   return (
     <section className='ContainerGlobal'>
         <div className='containerOfferType'>
-          <CheckBox title='Actual' value={1} name='tipo_oferta' checked={filtros.tipo_oferta.includes('1')} onChange={handleChangeCheck} ></CheckBox>
-          <CheckBox title='Histórico' value={2} name='tipo_oferta' checked={filtros.tipo_oferta.includes('2')} onChange={handleChangeCheck} ></CheckBox>
+          <CheckBox 
+            title='Actual' 
+            value={1} 
+            name='tipo_oferta' 
+            checked={filtros.tipo_oferta.includes('1')} 
+            onChange={handleChangeCheck} />
+          <CheckBox 
+            title='Histórico' 
+            value={2} 
+            name='tipo_oferta' 
+            checked={filtros.tipo_oferta.includes('2')} 
+            onChange={handleChangeCheck} />
         </div>
         
         <div className='cointainerYear'>
           <label>Año</label>
-        <SelectComponent name='year' value={filtros.year} onChange={handleChangeSelect} options={Year}></SelectComponent>
+        <SelectComponent 
+          name='year' 
+          value={filtros.year} 
+          onChange={handleChangeSelect} 
+          options={Year} />
         </div>
         <div className='contendeorBotones'>
             <Buttons clase = 'clear' title = 'Limpiar campos'></Buttons>

@@ -8,17 +8,23 @@ import ModifiedIconHouse from '../../assets/ModifiedIconHouse.svg'
 import ModifiedIconBodega from '../../assets/ModifiedIconBodega.svg'
 import {Buttons} from '../common/Buttons'
 import { SelectComponent } from '../common/SelectComponent';
-import { comunas, barrios, Year } from '../../data/inputSelects'; 
+import {Year } from '../../data/inputSelects'; 
 import { InputAreas } from '../common/InputAreas';
 import { useEffect, useState } from 'react';
 import file from '../../assets/file.svg';
 import { fetchData } from '../../services/fetchData';
+import { cargaDataLocalidad } from '../../services/cargaDataLocalidad';
 
 export function OfertaInmobiliaria() {
     const initialStateFiltros = {tipoOferta: [], comuna: null, barrios: null, tipoPredio:[] , year: null, areaMinima:'', areaMaxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
-    const [showHola, setShowHola] = useState(false); // Estado para controlar la visibilidad de <h1>
-/*     const [dataResult, setDataResult] = useState({meta: {}, data: []});   */
+    const [showDesplegable, setShowHola] = useState(false); // Estado para controlar la visibilidad de <h1>
+    const [dataResult, setDataResult] = useState({meta: {}, data: []}); 
+    const [dataCount, setDataCount] = useState({arriendos:0 , ventas:0}); 
+    const [combosLocalidad, setCombosLocalidad] = useState([])
+    const [barrios, setBarrios] = useState([])
+    const [comunas, setComunas] = useState([])
+    const[keyBarrio, setKeyBarrio] = useState(0)
 
     const handleChangeCheck= (e) => { //Evento para controlar el checkbox de tipo de oferta y tipo de predio
         let checkvalues = filtros[e.target.name]  //e obtiene el arreglo actual de valores seleccionados del estado filtros utilizando el nombre del checkbox como clave
@@ -35,72 +41,164 @@ export function OfertaInmobiliaria() {
         let value = e ? e.value : null;
         setFiltros({...filtros, [name]: value})
     }
-
+    
     const handleChange= (e) => { //Evento para controlar el input de areas
         setFiltros({...filtros, [e.target.name]: e.target.value})
     }
 
-    const onHandleClickButton = async() => { //Evento para controlar la vista desplegable de los resultados despues de dar click
-        console.log('hola');
+    const onHandleClickButton = async() => { //Evento para controlar la vista desplegable de los resultados despues de dar click y llamar el fetch para consultar los datos
         let result = await fetchData(filtros);
-        console.log(result);
-/*         setDataResult(result); */
+        setDataResult(result.dataResult);
+        setDataCount(result.dataCount)
         setShowHola(true);
     };
 
-
-    
-    useEffect(() => {
+    useEffect(() => {    //Muestra los filtros solo una vez que cargue el componente, si vuelve a cargar no se vuelve a ejecutar.
         console.log(filtros);
     }, [filtros]) 
     
+    useEffect(() => { //Para cargar los datos de las comunas y los barrios en el formulario, una vez que se renderiza el componente.
+        if (filtros.comuna){
+            let dataBarrios = combosLocalidad.filter(item => item.field === "barrio" && item.comuna === filtros.comuna)
+            setBarrios([...dataBarrios]);
+        }else{
+            let dataBarrios = combosLocalidad.filter(item => item.field === "barrio")
+            setBarrios([...dataBarrios]);
+        }
+        setFiltros({...filtros, ["barrios"]: null})
+        setKeyBarrio(keyBarrio+1)
+    }, [filtros.comuna])
+    
+    useEffect(() => {
+        selectOptionsDataFetch();
+    }, [])
+
+    /* LLAMADO A LA BD para cargar las comunas y los barrios */
+
+    const selectOptionsDataFetch = async() => {
+        const filtroLocalidadStatus = {'comuna': Boolean(filtros.comuna), 'barrios': Boolean(filtros.barrios)}; 
+        console.log('filtros comunas' + Object.values(filtroLocalidadStatus)); //Arroja true si  hay algo dentro del select, de lo contrario arroja false
+        const resultDataLocalidad = await cargaDataLocalidad(filtroLocalidadStatus);
+        setCombosLocalidad(resultDataLocalidad); 
+        let dataBarrios = resultDataLocalidad.filter(item => item.field ==="barrio")
+        setBarrios(dataBarrios);
+        let dataComuna = resultDataLocalidad.filter(item => item.field ==="comuna")
+        setComunas(dataComuna);
+    } 
+    
+
     return (
         <section className='ContainerGlobal'>
         <div className="containerOfferType">
-            <CheckBox name ='tipoOferta' title='Venta' value='SELL' checked={filtros.tipoOferta.includes("SELL")} onChange={handleChangeCheck}></CheckBox>
-            <CheckBox name="tipoOferta" title='Arriendo' value='RENT' checked={filtros.tipoOferta.includes("RENT")} onChange={handleChangeCheck}></CheckBox>
+            <CheckBox 
+                name ='tipoOferta' 
+                title='Venta' 
+                value='SELL' 
+                checked={filtros.tipoOferta.includes("SELL")} 
+                onChange={handleChangeCheck}/>
+            
+            <CheckBox 
+                name="tipoOferta" 
+                title='Arriendo' 
+                value='RENT' 
+                checked={filtros.tipoOferta.includes("RENT")} 
+                onChange={handleChangeCheck}/>
         </div>
         <div className="containerSector">
             <div className='selector'>
                 <label>Comuna</label>
-               <SelectComponent name='comuna' options={comunas} value={filtros.comuna} onChange={handleChangeSelect} ></SelectComponent>
+               <SelectComponent 
+                    name='comuna' 
+                    options={comunas} 
+                    value={filtros.comuna} 
+                    onChange={handleChangeSelect} />
             </div>
             <div className='selector'>
                 <label>Barrio</label>
-                <SelectComponent name='barrios' options={barrios} value={filtros.barrios} onChange={handleChangeSelect}></SelectComponent>
+                <SelectComponent 
+                    name='barrios' 
+                    options={barrios} 
+                    value={filtros.barrios} 
+                    key={"comboBarrio"+keyBarrio} 
+                    onChange={handleChangeSelect} />
             </div>
         </div>
         <div className="containerPredio">
             <label>Tipo de predio</label>
             <div className='containerCheckBoxPredio'>
-                <CheckBox name='tipoPredio' title= 'Apartamento' value='APPARTMENT' checked={filtros.tipoPredio.includes("APPARTMENT")} onChange={handleChangeCheck} icon={IconApartment} checkedIcon={ModifiedIconApartment}></CheckBox> 
-                <CheckBox name='tipoPredio' title= 'Casa' value='HOUSE' checked={filtros.tipoPredio.includes("HOUSE")} onChange={handleChangeCheck} icon={IconHouse} checkedIcon={ModifiedIconHouse}></CheckBox>
-                <CheckBox name='tipoPredio' title= 'Bodega' value='WAREHOUSE' checked={filtros.tipoPredio.includes("WAREHOUSE")} onChange={handleChangeCheck} icon={IconBodega} checkedIcon={ModifiedIconBodega}></CheckBox>
+                <CheckBox 
+                name='tipoPredio' 
+                title= 'Apartamento' 
+                value='APPARTMENT' 
+                checked={filtros.tipoPredio.includes("APPARTMENT")} 
+                onChange={handleChangeCheck} 
+                icon={IconApartment} 
+                checkedIcon={ModifiedIconApartment}></CheckBox> 
+                
+                <CheckBox 
+                    name='tipoPredio' 
+                    title= 'Casa' 
+                    value='HOUSE' 
+                    checked={filtros.tipoPredio.includes("HOUSE")} 
+                    onChange={handleChangeCheck} 
+                    icon={IconHouse} checkedIcon={ModifiedIconHouse}/>
+                <CheckBox 
+                    name='tipoPredio' 
+                    title= 'Bodega' 
+                    value='WAREHOUSE' 
+                    checked={filtros.tipoPredio.includes("WAREHOUSE")} 
+                    onChange={handleChangeCheck} 
+                    icon={IconBodega} 
+                    checkedIcon={ModifiedIconBodega} />
             </div>
         </div>
         <div className="cointainerYear">
             <label>Año</label>
-            <SelectComponent name='year' options={Year} value={filtros.year} onChange={handleChangeSelect}></SelectComponent>
+            <SelectComponent 
+                name='year' 
+                options={Year} 
+                value={filtros.year} 
+                onChange={handleChangeSelect}/>
         </div>
         <div className="ContainerAreas">
             <label>Áreas</label>
             <div>
-                <InputAreas name="areaMinima" value={filtros.areaMinima} onChange={handleChange} placeholder= 'Mínimo' required={true}/>
-                <InputAreas name="areaMaxima" value={filtros.areaMaxima} onChange={handleChange} placeholder= 'Máximo' required={true}/>
+                <InputAreas 
+                    name="areaMinima" 
+                    value={filtros.areaMinima} 
+                    onChange={handleChange} 
+                    placeholder= 'Mínimo' 
+                    required={true}/>
+                <InputAreas 
+                    name="areaMaxima" 
+                    value={filtros.areaMaxima} 
+                    onChange={handleChange} 
+                    placeholder= 'Máximo' 
+                    required={true}/>
             </div>
         </div>
         <div className='contendeorBotones'>
-            <Buttons clase = 'clear' title = 'Limpiar campos' onClick={onHandleClickButton}></Buttons>
-            <Buttons clase = 'consult' title = 'Consultar' onClick={onHandleClickButton}></Buttons>
+            <Buttons 
+                clase = 'clear' 
+                title = 'Limpiar campos' 
+                onClick={onHandleClickButton} />
+            <Buttons 
+                clase = 'consult' 
+                title = 'Consultar' 
+                onClick={onHandleClickButton} />
         </div>
 
-        {showHola &&  //Mostrar <h1> si showHola es true
+        {showDesplegable &&  //Mostrar <h1> si showDesplegable es true
         <div className='ContainerResultados'>
             <div className='encabezado'>
                 <h3>Resultados de su consulta</h3>
                 <div>
                     <img src={file} id='file' alt='Informe'></img>
-                    <a href='https://www.google.com' target='_blank' rel='noopener noreferrer' id='enlace'>Descargar informe</a>
+                    <a 
+                        href='https://www.google.com' 
+                        target='_blank' 
+                        rel='noopener noreferrer' 
+                        id='enlace'>Descargar informe</a>
                 </div>
             </div>
             <div className='ContainerScroll'>
@@ -166,7 +264,6 @@ export function OfertaInmobiliaria() {
                 </div>
             </div>
         </div>
-
         } 
     </section> 
   )
