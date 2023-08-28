@@ -19,8 +19,8 @@ export function OfertaInmobiliaria() {
     const initialStateFiltros = {tipoOferta: [], comuna: null, barrios: null, tipoPredio:[] , year: null, areaMinima:'', areaMaxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
     const [showDesplegable, setShowDesplegable] = useState(false); // Estado para controlar la visibilidad de <h1>
-    const [dataResult, setDataResult] = useState({meta: {}, data: []}); 
-    const [dataCount, setDataCount] = useState({arriendos:0 , ventas:0}); 
+    const [dataResult, setDataResult] = useState([]); 
+    const [dataCount, setDataCount] = useState([]); 
     const [combosLocalidad, setCombosLocalidad] = useState([])
     const [barrios, setBarrios] = useState([])
     const [comunas, setComunas] = useState([])
@@ -207,11 +207,11 @@ export function OfertaInmobiliaria() {
                     <p>Número de ofertas en general:</p>
                     <div className='tipoOferta'>
                         <p>Venta:</p>
-                        <span>155</span> {/* sujeto a calculos */}
+                        <span>{(dataCount.ventas.total) ? dataCount.ventas.total : '0'}</span> {/* sujeto a calculos */}
                     </div>
                     <div className='tipoOferta'>
                         <p>Arriendo:</p>
-                        <span>260</span> {/* sujeto a calculos */}
+                        <span>{(dataCount.arriendos.total) ? dataCount.arriendos.total : '0'}</span> {/* sujeto a calculos */}
                     </div>
                 </div>
                 <div className='containerTable FirstTable'>
@@ -224,47 +224,17 @@ export function OfertaInmobiliaria() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Apartamento</td>
-                                <td>2300</td>
-                                <td>104</td>
+                        {dataResult.map(item => (
+                            <tr key={item.promedio_area}>
+                                <td>{item.tipo_inmueble}</td>
+                                <td>{item.promedio_area}</td>
+                                <td>{item.promedio_precio}</td>
                             </tr>
-                            <tr>
-                                <td>Casa</td>
-                                <td>2035</td>
-                                <td>54654</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div className='descriptionTwo'>
-                    <p>Otro ítem con información de valor</p>
-                </div>
-                <div className='containerTable'>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo de inmueble</th>
-                                <th>Promedio venta m<sup>2</sup></th>
-                                <th>Promedio arriendo m<sup>2</sup></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Apartamento</td>
-                                <td>2300</td>
-                                <td>104</td>
-                            </tr>
-                            <tr>
-                                <td>Casa</td>
-                                <td>2035</td>
-                                <td>54654</td>
-                            </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             </div>
-            {JSON.stringify(dataResult)}
         </div>
         } 
     </section> 
