@@ -18,7 +18,7 @@ import { cargaDataLocalidad } from '../../services/cargaDataLocalidad';
 export function OfertaInmobiliaria() {
     const initialStateFiltros = {tipoOferta: [], comuna: null, barrios: null, tipoPredio:[] , year: null, areaMinima:'', areaMaxima:''} /* declaracion del jason donde se guardaran los valores de acuerdo al onchange */
     const[filtros, setFiltros] = useState(initialStateFiltros) 
-    const [showDesplegable, setShowHola] = useState(false); // Estado para controlar la visibilidad de <h1>
+    const [showDesplegable, setShowDesplegable] = useState(false); // Estado para controlar la visibilidad de <h1>
     const [dataResult, setDataResult] = useState({meta: {}, data: []}); 
     const [dataCount, setDataCount] = useState({arriendos:0 , ventas:0}); 
     const [combosLocalidad, setCombosLocalidad] = useState([])
@@ -50,7 +50,9 @@ export function OfertaInmobiliaria() {
         let result = await fetchData(filtros);
         setDataResult(result.dataResult);
         setDataCount(result.dataCount)
-        setShowHola(true);
+        if(result){
+            setShowDesplegable(true);
+        }
     };
 
     useEffect(() => {    //Muestra los filtros solo una vez que cargue el componente, si vuelve a cargar no se vuelve a ejecutar.
@@ -77,7 +79,6 @@ export function OfertaInmobiliaria() {
 
     const selectOptionsDataFetch = async() => {
         const filtroLocalidadStatus = {'comuna': Boolean(filtros.comuna), 'barrios': Boolean(filtros.barrios)}; 
-        console.log('filtros comunas' + Object.values(filtroLocalidadStatus)); //Arroja true si  hay algo dentro del select, de lo contrario arroja false
         const resultDataLocalidad = await cargaDataLocalidad(filtroLocalidadStatus);
         setCombosLocalidad(resultDataLocalidad); 
         let dataBarrios = resultDataLocalidad.filter(item => item.field ==="barrio")
@@ -263,6 +264,7 @@ export function OfertaInmobiliaria() {
                     </table>
                 </div>
             </div>
+            {JSON.stringify(dataResult)}
         </div>
         } 
     </section> 
